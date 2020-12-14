@@ -6,9 +6,16 @@ const App: () => React$Node = () => {
   const scrollViewRef = useRef(null);
 
   useEffect(() => {
+    const innerViewNode = scrollViewRef.current.getInnerViewNode();
+    const innerViewRef = scrollViewRef.current.getInnerViewRef();
+
     setValues({
-      getInnerViewNode: typeof scrollViewRef.current.getInnerViewNode(),
-      getInnerViewRef: typeof scrollViewRef.current.getInnerViewRef(),
+      getInnerViewNode: innerViewNode
+        ? typeof innerViewNode
+        : String(scrollViewRef.current.getInnerViewNode()),
+      getInnerViewRef: innerViewRef
+        ? typeof innerViewRef
+        : String(scrollViewRef.current.getInnerViewRef()),
     });
   }, []);
 
